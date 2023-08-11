@@ -1,0 +1,35 @@
+{
+  "name": "tg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@pinecone-database/pinecone": "^0.1.6",
+    "axios": "^1.4.0",
+    "bad-words": "^3.0.4",
+    "dotenv": "^16.3.1",
+    "fasttext": "^1.0.0",
+    "langchain": "^0.0.120",
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.2",
+    "node-telegram-bot-api": "^0.61.0",
+    "nodemon": "^3.0.1",
+    "openai": "^3.3.0",
+    "pdf-parse": "^1.1.1",
+    "profanity-check": "^0.0.3",
+    "telegraf": "^4.12.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/preset-env": "^7.22.9"
+  },
+  "type": "module"
+}
