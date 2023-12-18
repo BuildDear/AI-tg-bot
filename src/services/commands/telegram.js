@@ -51,13 +51,9 @@ export default async function startBot(bot) {
     });
 
     bot.on("text", async (ctx) => {
-
-        if(!isCommunicate)
-        {
+        if(!isCommunicate) {
             ctx.reply("Щоб поспілкуватися з ботом натисніть кнопку \n" + "(Щось запитати) ❤️");
-        }
-        else
-        {
+        } else {
             const userText = ctx.message.text;
             const targetChatId = ctx.message.chat.id;
             const stickerFileId = process.env.STICKERFILEID;
@@ -65,31 +61,31 @@ export default async function startBot(bot) {
             await ctx.telegram.sendSticker(targetChatId, stickerFileId);
             ctx.reply("Я думаю...");
 
-            try{
+            try {
                 async function processUserInput(userText) {
                     const result = await initAI(userText);
                     ctx.reply(result);
                 }
 
-                if (isFirstResponse)
-                {
+                if (isFirstResponse) {
                     await processUserInput(userText);
                     isFirstResponse = false; // Позначаємо, що перша відповідь вже відбулася
-                }
-                else
-                {
+                } else {
                     setTimeout(() => {
                         processUserInput(userText);
                     }, 20000);
                 }
-            }catch (error)
-            {
-                console.log(error.response.data);
+            } catch (error) {
+                if (error.response && error.response.data) {
+                    console.log(error.response.data);
+                } else {
+                    // Якщо немає властивості response або data, виводьте загальну помилку
+                    console.error("An error occurred:", error);
+                }
             }
         }
-
-
     });
+
 
     await bot.launch();
 }

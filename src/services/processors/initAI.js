@@ -20,7 +20,7 @@ export async function initAI(userText)
 
      await initPinecone();
 
-     await createPineconeIndex(pinecone, pineconeIndexName, pineconeVectorDimension);
+     await createPineconeIndex(pinecone, pineconeIndexName, 1536);
 
      await updatePinecone(pinecone, pineconeIndexName, docs);
 

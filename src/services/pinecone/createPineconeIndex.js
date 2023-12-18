@@ -7,6 +7,7 @@ export const createPineconeIndex = async (
 
     console.log(`Checking "${indexName}"...`);
     const existingIndexes = await client.listIndexes();
+    console.log(`111`);
 
     if (!existingIndexes.includes(indexName))
     {
